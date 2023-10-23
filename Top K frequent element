@@ -1,0 +1,23 @@
+import collections
+import heapq
+
+def kMostFrequentElements(nums, k):
+    count = collections.Counter(nums)
+
+    heap = [(-freq, num) for num, freq in count.items()]
+    heapq.heapify(heap)
+
+    result = []
+    for _ in range(k):
+        result.append(heapq.heappop(heap)[1])
+
+    return result
+
+# Test cases
+nums1 = [1, 1, 1, 2, 2, 3]
+k1 = 2
+print(kMostFrequentElements(nums1, k1))  
+
+nums2 = [1]
+k2 = 1
+print(kMostFrequentElements(nums2, k2)) 
