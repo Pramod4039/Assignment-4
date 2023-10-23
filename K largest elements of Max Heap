@@ -1,0 +1,29 @@
+def findTopKElements(max_heap, k):
+    top_k = []
+    for i in range(k):
+        if i < len(max_heap):
+            top_k.append(max_heap[i])
+            max_heapify(max_heap, i, len(max_heap))
+        else:
+            break
+    return top_k
+
+def max_heapify(max_heap, index, size):
+    largest = index
+    left_child = 2 * index + 1
+    right_child = 2 * index + 2
+
+    if left_child < size and max_heap[left_child] > max_heap[largest]:
+        largest = left_child
+    if right_child < size and max_heap[right_child] > max_heap[largest]:
+        largest = right_child
+
+    if largest != index:
+        max_heap[index], max_heap[largest] = max_heap[largest], max_heap[index]
+        max_heapify(max_heap, largest, size)
+
+# Example usage
+heap_array = [15, 13, 12, 10, 8, 9]
+k = 5
+top_k_elements = findTopKElements(heap_array, k)
+print(top_k_elements) 
