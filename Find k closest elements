@@ -1,0 +1,19 @@
+def kClosestElements(arr, k, x):
+    left, right = 0, len(arr) - 1
+
+    while right - left >= k:
+        if abs(arr[left] - x) > abs(arr[right] - x):
+            left += 1
+        else:
+            right -= 1
+
+    return arr[left:right + 1]
+
+# Test cases
+arr1 = [1, 2, 3, 4, 5]
+k1, x1 = 4, 3
+print(kClosestElements(arr1, k1, x1))  
+
+arr2 = [1, 2, 3, 4, 5]
+k2, x2 = 4, -1
+print(kClosestElements(arr2, k2, x2))  
