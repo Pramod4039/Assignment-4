@@ -23,4 +23,30 @@
     Time Complexity:
         This approach has an O(log(n) + k) time complexity, where n is the length of the input array arr. The window is expanded to include k additional elements once the initial binary search phase, which finds the element that is closest to the input x in O(log(n)) time, has been completed. Since k is the maximum number of components we desire in the result, the window expansion step runs in the worst case in O(k) time. As desired, the overall time complexity is therefore better than O(n log(n)).
 
+3: K largest elements of Max Heap:
+    Algorithm used: 
+        max_heap, k, findTopKElements Algorithm:
+        To store the top k entries, create the empty list top_k.
+        Use the loop variable i to iterate across the range from 0 to k (exclusively).
+        Within the loop
+            a. Verify that i is within the constraints of the array by seeing if it is shorter than the max_heap.
+            b. If the criterion is satisfied, add the element from the max_heap at index i to the top_k list.
+            c. To make sure the max heap property is kept for the max_heap, call the max_heapify function.
+            d. Exit the loop if the step 3a requirement is not satisfied (i.e., there are still more than k elements in the heap).
+        Give back the top_k list, which contains the first k elements.
+        size, index, and max_heapify (max_heap) Algorithm:
+        Start with the largest element, the index index.
+        Determine the indices of the current node's left (left_child) and right (right_child) children:
+        left_child = 2 * index + 1
+        right_child = 2 * index + 2
+        Update largest to be the index of the left_child if the left_child exists and is larger than the element at the largest index.
+        Update largest to be the index of the right_child if the right_child is present and greater than the element at the largest index.
+        To maintain the max heap property, swap the elements at the index and largest indices in the max_heap if the largest index is not equal to the original index.
+        To guarantee that the max heap property is maintained in the subtree, call max_heapify recursively on the greatest index.
+    Time Complexity:
+        The findTopKElements method performs its main loop k times.
+        The max_heapify function, whose time complexity is O(log n), where n is the size of the heap, is used once throughout each iteration.
+        As a result, the findTopKElements function's time complexity is O(k * log n), where n is the heap's size.
+        Overall, the algorithm effectively preserves the original heap structure while finding the top k elements from the maximum heap.
+
 
