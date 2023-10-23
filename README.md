@@ -49,4 +49,16 @@
         As a result, the findTopKElements function's time complexity is O(k * log n), where n is the heap's size.
         Overall, the algorithm effectively preserves the original heap structure while finding the top k elements from the maximum heap.
 
+4: Shortest subarray with sum atleat K:
+    Algorithm used:
+        In order to hold the cumulative sums of the input array nums, create the prefix sum array prefix_sum with an additional member.
+        Make a deque called deque_window and set min_subarray_length's initial value to a positive integer of infinity.
+        Prefix sums should be calculated and stored in prefix_sum when you iterate through the input array nums.
+        Perform the following for each index i from 0 to length:
+            Update min_subarray_length by taking the minimum between the current value of min_subarray_length and the difference of i and the front element of deque_window as long as deque_window is not empty and the difference between the current prefix sum prefix_sum[i] and the prefix sum at the front of deque_window is greater than or equal to k. From deque_window, eliminate the front element.
+            Remove the back element from deque_window while deque_window is not empty and the prefix sum at index i is less than or equal to the prefix sum at the back of deque_window.
+            To deque_window, append the current index, i.
+        If min_subarray_length is not positive infinity, it should be returned as a valid subarray length. If not, return -1.
+    Time complexity:
+        This code has an O(n) time complexity, where n is the size of the input array nums. The array is iterated through once to compute the prefix sums and once more to determine the shortest subarray length. The deque's internal operations (popleft and pop), which typically take constant time, have no impact on the time complexity as a whole. As a result, the time complexity of the code is proportional to the size of the input.
 
