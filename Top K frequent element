@@ -20,4 +20,4 @@ print(kMostFrequentElements(nums1, k1))
 
 nums2 = [1]
 k2 = 1
-print(kMostFrequentElements(nums2, k2)) 
+print(kMostFrequentElements(nums2, k2))

@@ -7,3 +7,8 @@
         The k most frequent elements are placed at the beginning of a result list.
         The loop for _ in range(k) repeatedly pops the element with the highest (most negative) frequency and adds the associated element (the second element in the tuple) to the result list in order to extract the k most frequent elements from the max-heap.
         The k most frequent elements in the result list are returned.
+    Time complexity:
+        Using collections to count how many times each element appears.The length of Counter is O(n), where n is the size of the input array nums.
+        Since the heap has a maximum of k elements and each insertion into the heap requires O(log(n)) time, it takes O(k * log(n)) time to create the heap of distinct elements with their negative frequencies.
+        It takes O(k * log(k)) time to extract the k most frequent entries from the heap.
+        In the worst situation, this algorithm's temporal complexity is O(n + k * log(n)). If k is less than log(n), it can roughly be expressed as O(n). Because we only remove one element from the heap in the second example with k = 1, the time complexity is O(n).
