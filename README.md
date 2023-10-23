@@ -62,3 +62,24 @@
     Time complexity:
         This code has an O(n) time complexity, where n is the size of the input array nums. The array is iterated through once to compute the prefix sums and once more to determine the shortest subarray length. The deque's internal operations (popleft and pop), which typically take constant time, have no impact on the time complexity as a whole. As a result, the time complexity of the code is proportional to the size of the input.
 
+5: Kth Smallest Prime Fraction:
+    Algorithm used: 
+        Make the left and right initial values. These depict the many fractional values that might range from 0 to 1.
+        While left is less than right, enter a binary search loop.
+        As the average of left and right, calculate mid. This displays the percent that is currently being considered.
+        Set up the count and maximumFraction to one. Both count and maxFraction keep track of the total number of fractions detected that are less than or equal to mid.
+        Set the value of an index j to 0.
+        Go over the arr array repeatedly.
+            Increase j even though j is shorter than arr[i] and arr[i] is greater than mid * arr[j]. Making sure you're counting fractions less than mid is ensured by this step.
+            The amount of elements left in arr (len(arr) - j) should be added to the count because they are still valid fractions.
+            By choosing the highest value between the existing maxFraction and the ratio arr[i]/arr[j], update maxFraction.
+        Verify whether count is smaller than k. If so, move the slider from left to middle to indicate that you should look in a higher range.
+        If not, adjust right to mid, which signifies that you should look in a lower range.
+        Till left and right are very near together, repeat the binary search cycle.
+        Array [arr[0], maxFraction] should include the final fraction.
+    Time complexity:
+        This algorithm's time complexity is O(n * log(max_value)), where
+            The length of the array, arr, is n.
+            The arr array's maximum value is represented by max_value.
+        The loop in the binary search process runs in O(log(max_value)) iterations until left and right are very close to one another. You traverse the arr array in each iteration, which takes O(n) time. The total time complexity is therefore O(n * log(max_value)).
+

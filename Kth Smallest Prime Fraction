@@ -1,0 +1,30 @@
+def kthSmallestFraction(arr, k):
+    left, right = 0, 1
+
+    while left < right:
+        mid = (left + right) / 2
+        count, maxFraction = 0, 0
+        j = 0
+
+        for i in range(len(arr)):
+            while j < len(arr) and arr[i] > mid * arr[j]:
+                j += 1
+            if j < len(arr):
+                count += len(arr) - j
+                maxFraction = max(maxFraction, arr[i] / arr[j])
+
+        if count < k:
+            left = mid
+        else:
+            right = mid
+
+    return [arr[0], maxFraction]
+
+# Test cases
+arr1 = [1, 2, 3, 5]
+k1 = 3
+print(kthSmallestFraction(arr1, k1)) 
+
+arr2 = [1, 7]
+k2 = 1
+print(kthSmallestFraction(arr2, k2))  
